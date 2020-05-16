@@ -1,32 +1,59 @@
-const Animal = {
-    name: "",
-    sound: 0,
-    says: function(){
-        console.log(this.name + " говорит " + this.sound)
-    },
-    constrct: function(name, sound){
+class Animal {
+    constructor(name = "",color = "" , say = "") {
         this.name = name;
-        this.sound = sound;
-    },
-    say: function(){
-        console.log(this.name + " " + this.sound)
-    },
-    constrct: function(name, sound){
-        this.name = name;
-        this.sound = sound;
+        this.color = color;
+        this.say = say;
+    }
+
+    info() {
+        console.log(this.name + " "+ this.color + " цвета  и говорит " + this.say);
     }
 }
 
-const duck = Object.create(Animal)
-duck.constrct("Утка", "Кря-Кря!")
+class Dog extends Animal {
+    constructor(name, color,say, kakoy = "") {
+        super(name, color , say)
+        this.kakoy = kakoy;
+    }
 
-const dog = Object.create(Animal)
-dog.constrct("Собака", "Гав-Гав!")
+    getDog() {
+        console.log("Он " + this.kakoy);
+    }
+}
 
-const chipmunk = Object.create(Animal)
-chipmunk.constrct("Бурундук", "пищит...")
+const sobaka = new Dog("Собака", "рыжего", "гав - гав!", "крутой")
 
+sobaka.info()
+sobaka.getDog()
 
-duck.says()
-dog.says()
-chipmunk.say()
+class Duck extends Animal {
+    constructor(name,  color, say, age = "") {
+        super(name, color,say)
+        this.age = age;
+    }
+
+    getDuck() {
+        console.log("Ей " + this.age + " лет");
+    }
+}
+
+const duck = new Duck("Утка", "белого", "Кря-Кря!", "5")
+
+duck.info()
+duck.getDuck()
+
+class Chipmunk extends Animal {
+    constructor(name,color,say, action = "") {
+        super(name,color, say)
+        this.action = action;
+    }
+
+    getChipmunk() {
+        console.log("Он " + this.action)
+    }
+}
+
+const chipmunk = new Chipmunk("Бурундук", "серого" ,"он не говорит, а пищит " , "наелся и спит")
+
+chipmunk.info()
+chipmunk.getChipmunk()
